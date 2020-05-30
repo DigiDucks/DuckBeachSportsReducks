@@ -506,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820517939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1290479, y: -2.278798, z: -30.132812}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1239356026}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 820944046}
   - component: {fileID: 820944050}
   m_Layer: 0
-  m_Name: SkateDuck 1
+  m_Name: SkateDuck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.91, y: 3.74}
+  m_Size: {x: 2.8, y: 3.6}
   m_EdgeRadius: 0
 --- !u!212 &820944048
 SpriteRenderer:
@@ -640,7 +640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820944045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.28, y: -0.26, z: 0}
+  m_LocalPosition: {x: -4.5, y: -1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -658,7 +658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eea692c63d5b094e96bdef5554a5f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: {x: 0, y: 200}
+  jumpForceStanding: {x: 0, y: 200}
+  jumpForceCrouching: {x: 0, y: 100}
+  crouch: {x: 1, y: 0.5, z: 1}
   isGrounded: 0
 --- !u!1 &1086198448
 GameObject:
@@ -864,7 +866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239356023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9690478, y: -0.51120186, z: 30.132812}
+  m_LocalPosition: {x: -3, y: -3, z: 30}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 820517940}
@@ -883,6 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: {x: -2, y: 0, z: 0}
+  offScreenTeleportPosition: {x: 13, y: -3, z: 0}
 --- !u!1 &1306049807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479907199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.490953, y: -0.51120186, z: 30.132812}
+  m_LocalPosition: {x: 17.44, y: -3, z: 30}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 820517940}
@@ -1154,6 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: {x: -2, y: 0, z: 0}
+  offScreenTeleportPosition: {x: 13, y: -3, z: 0}
 --- !u!1001 &1500423247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1403,7 +1407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772891196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.2509522, y: -0.51120186, z: 30.132812}
+  m_LocalPosition: {x: 7.232, y: -3, z: 30}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 820517940}
@@ -1422,6 +1426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: {x: -2, y: 0, z: 0}
+  offScreenTeleportPosition: {x: 13, y: -3, z: 0}
 --- !u!1001 &5362042807866559328
 PrefabInstance:
   m_ObjectHideFlags: 0

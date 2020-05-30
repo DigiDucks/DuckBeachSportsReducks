@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SkatePlayer : MonoBehaviour
 {
-    public Vector2 jumpForce = new Vector2(0, 200);
+    public Vector2 jumpForceStanding = new Vector2(0, 200);
+    public Vector2 jumpForceCrouching = new Vector2(0, 100);
+    public Vector3 crouch = new Vector3(1, 0.5f, 1);
     public bool isGrounded = false;
+    private bool isCrouched = false; 
     Rigidbody2D jumpBody;
 
     // Start is called before the first frame update
@@ -17,15 +20,43 @@ public class SkatePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Jump") && isGrounded)
+        // Crouch
+        if (Input.GetButton("Vertical"))
         {
-            jumpBody.AddForce(jumpForce);
+            if (isCrouched == false)
+            {
+                isCrouched = true;
+                transform.localScale = crouch;
+                transform.Translate(0, -0.885f, 0);
+            }
+        }
+        else
+        {
+            if (isCrouched == true)
+            {
+                isCrouched = false;
+                transform.localScale = Vector3.one;
+                transform.Translate(0, 0.885f, 0);
+            }
+        }
+        // Jump
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            if (isCrouched)
+            {
+                jumpBody.AddForce(jumpForceCrouching);
+            }
+            else
+            {
+                jumpBody.AddForce(jumpForceStanding);
+            }
             isGrounded = false;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Give a jump when ground is hit
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
