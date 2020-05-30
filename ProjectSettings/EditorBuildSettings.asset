@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TestGame0.unity
     guid: c9f30d6131ab8374c809f18ee8bca485
   - enabled: 1
-    path: Assets/Scenes/TestGame1.unity
+    path: Assets/Scenes/SkateGame.unity
     guid: 969cae2185625e54fbf6735c005008ef
   - enabled: 1
     path: Assets/Scenes/TestGame2.unity
