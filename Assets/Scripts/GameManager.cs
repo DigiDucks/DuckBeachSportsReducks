@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     List<int> levelIndexes = new List<int>();
     List<int> playedGames = new List<int>();
+
+    [SerializeField]
+    bool debugging = false;
 
     //Awake is called when the object is activated, before when the scene is loaded
     private void Awake()
@@ -39,6 +41,11 @@ public class GameManager : MonoBehaviour
         { 
             levelIndexes.Add(index);
         }
+
+        if (debugging)
+        {
+            StartCoroutine("StartSequence");
+        }
     }
 
     public void BeginTransistion()
@@ -49,7 +56,21 @@ public class GameManager : MonoBehaviour
     public void BeginGame()
     {
         SceneManager.LoadScene(PullLevel());
-        //FindObjectOfType<GameTemplate>().Begin();
+        StartCoroutine("StartSequence");
+    }
+
+    IEnumerator StartSequence()
+    {   
+        yield return new WaitForSeconds(0.5f);
+        GameObject instruction = GameObject.FindGameObjectWithTag("UI");
+        if ( instruction != null)
+        {
+            instruction.GetComponent<Animator>().Play("Entry");
+        }
+        yield return new WaitForSeconds(1f);
+        if(FindObjectOfType<GameTemplate>() != null) FindObjectOfType<GameTemplate>().Begin();
+        yield return new WaitForSeconds(2f);
+        instruction.SetActive(false);
     }
 
     int PullLevel()
@@ -82,7 +103,7 @@ public class GameManager : MonoBehaviour
         nextLevel = levelIndexes[pulledIndex];
         playedGames.Add(nextLevel);
         levelIndexes.Remove(nextLevel);
-        Debug.Log(levelIndexes.Count);
+        //Debug.Log(levelIndexes.Count);
 
 
         return nextLevel;

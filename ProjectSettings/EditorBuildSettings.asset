@@ -18,7 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SkateGame.unity
     guid: 969cae2185625e54fbf6735c005008ef
   - enabled: 1
-    path: Assets/Scenes/TestGame2.unity
+    path: Assets/Scenes/KayakGame.unity
+    guid: 26df8f59a8869684dbe7eaede1fafe45
+  - enabled: 1
+    path: Assets/Scenes/VolleyBallGame.unity
     guid: 7a1fcbd10603da241a417474eb856408
   - enabled: 1
     path: Assets/Scenes/TestGame3.unity

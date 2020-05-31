@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Death
+  - Obs
+  - UI
   layers:
   - Default
   - TransparentFX
