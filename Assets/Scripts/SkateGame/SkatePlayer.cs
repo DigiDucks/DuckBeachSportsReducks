@@ -10,6 +10,7 @@ public class SkatePlayer : MonoBehaviour
     public bool isGrounded = false;
     private bool isCrouched = false; 
     Rigidbody2D jumpBody;
+    GameManager manager; 
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,12 @@ public class SkatePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        //let me speak to the manager
+        if(collision.gameObject.CompareTag("Death"))
+        {
+            manager = GameManager.instance;
+            manager.Lost();        
         }
     }
 }
