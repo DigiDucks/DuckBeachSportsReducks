@@ -23,7 +23,7 @@ public class BallMovement : MonoBehaviour
 	public bool started = false;
 
 
-	GameTemplate game;
+	VolleyBall game;
 	VBEnemy enemy;
 
 	Collider2D coll;
@@ -72,6 +72,7 @@ public class BallMovement : MonoBehaviour
 		{
 			returned = false;
 			SetNewPath(returned);
+			enemy.anim.Play("GullBump");
 		}
 		else
 		{
@@ -86,6 +87,8 @@ public class BallMovement : MonoBehaviour
 			returned = true;
 			SetNewPath(returned);
 			enemy.SetMove(targetPos);
+			collision.gameObject.GetComponent<VBPlayer>()._anim.Play("DuckBump");
+			game.VolleyCount();
 		}
 	}
 
@@ -94,12 +97,12 @@ public class BallMovement : MonoBehaviour
 		if (_returned)
 		{
 			startPos = transform.position;
- 			targetPos = new Vector3((int)Random.Range(-2, 5), -0.5f, 0); ;
+ 			targetPos = new Vector3((int)Random.Range(2, 5), -1.5f, 0);
 		}
 		else
 		{
 			startPos = targetPos;
-			targetPos = new Vector3((int)Random.Range(-5, 0), -6, 0);
+			targetPos = new Vector3((int)Random.Range(-5, -1), -6, 0);
 		}
 		started = true;
 	}

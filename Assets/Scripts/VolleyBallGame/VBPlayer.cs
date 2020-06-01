@@ -9,10 +9,13 @@ public class VBPlayer : MonoBehaviour
 
     Rigidbody2D _body;
 
+    public Animator _anim;
+
     // Start is called before the first frame update
     void Start()
     {
         _body = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

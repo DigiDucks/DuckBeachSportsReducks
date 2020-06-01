@@ -9,11 +9,14 @@ public class VBEnemy : MonoBehaviour
 
     Vector3 movePosition;
 
-    public float moveSpeed = 1f; 
+    public float moveSpeed = 1f;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         ball = FindObjectOfType<BallMovement>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
