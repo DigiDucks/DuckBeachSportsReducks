@@ -49,6 +49,7 @@ public class VolleyBall : GameTemplate
     IEnumerator Serve()
     {
         yield return new WaitForSeconds(1f);
+        FindObjectOfType<VBEnemy>().anim.Play("GullBump");
         ball.started = true;
     }
 }
