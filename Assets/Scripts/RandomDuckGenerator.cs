@@ -13,10 +13,11 @@ public class RandomDuckGenerator : MonoBehaviour
     void Start()
     {
         _rend = GetComponent<SpriteRenderer>();
+        GenerateDuck();
     }
     
     public void GenerateDuck()
     {
-        _rend.sprite = ducks[Random.Range(0, ducks.Count - 1)];
+        _rend.sprite = ducks[Random.Range(0, ducks.Count)];
     }
 }
