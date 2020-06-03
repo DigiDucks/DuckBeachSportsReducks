@@ -6,9 +6,10 @@ public class SkatePlayer : MonoBehaviour
 {
     public Vector2 jumpForceStanding = new Vector2(0, 200);
     public Vector2 jumpForceCrouching = new Vector2(0, 100);
-    public Vector3 crouch = new Vector3(1, 0.5f, 1);
+    public Vector3 crouch = new Vector3(1.5f, 0.5f, 1);
     public bool isGrounded = false;
-    private bool isCrouched = false; 
+    private bool isCrouched = false;
+    private Vector3 unCrouchScale = new Vector3(1.5f, 1.5f, 1);
     Rigidbody2D jumpBody;
     GameManager manager; 
 
@@ -36,7 +37,7 @@ public class SkatePlayer : MonoBehaviour
             if (isCrouched == true)
             {
                 isCrouched = false;
-                transform.localScale = Vector3.one;
+                transform.localScale = unCrouchScale;
                 transform.Translate(0, 0.885f, 0);
             }
         }
