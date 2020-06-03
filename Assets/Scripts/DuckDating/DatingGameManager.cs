@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class DatingGameManager : GameTemplate
 {
-    float timer = 30f;
+    float timer = 20f;
 
     bool start = false;
 
+    [SerializeField]
+    Text timerText;
+
+    [SerializeField]
+    GameObject playerBlush;
     public override void Begin()
     {
         start = true;
@@ -20,7 +27,10 @@ public class DatingGameManager : GameTemplate
 
     public override void Win()
     {
-        GameManager.instance.Won();
+        start = false;
+        timerText.text = "Date Get!";
+        StartCoroutine("WinBuffer");
+
     }
 
     // Start is called before the first frame update
@@ -37,11 +47,19 @@ public class DatingGameManager : GameTemplate
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
+                timerText.text = Convert.ToInt32(timer).ToString();
             }
             else
             {
                 Lose();
             }
         }
+    }
+
+    IEnumerator WinBuffer()
+    {
+        playerBlush.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        GameManager.instance.Won();
     }
 }

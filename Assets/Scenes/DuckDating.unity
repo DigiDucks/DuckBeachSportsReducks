@@ -433,6 +433,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1607356814}
+  - {fileID: 1852484351}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -999,6 +1000,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InstructionText
       objectReference: {fileID: 0}
+    - target: {fileID: 220609408963789114, guid: 24e54390b8373bb43a595dbdc4759ba2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2970099420474832794, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_Text
@@ -1062,22 +1068,22 @@ PrefabInstance:
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -480
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 144
+      value: 453.7
       objectReference: {fileID: 0}
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -918.8
+      value: -306.6
       objectReference: {fileID: 0}
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
@@ -1130,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blush: {fileID: 129748652}
-  quackPotency: 0.05
+  quackPotency: 0.025
 --- !u!4 &1366036883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553710629508651102, guid: 1539ea803f06a3a4ea9b67d78b5afab6,
@@ -1181,6 +1187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructions: Do a thing to win the game
+  timerText: {fileID: 1852484352}
+  playerBlush: {fileID: 2021107315}
 --- !u!224 &1607356814 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
@@ -1268,6 +1276,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1852484350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1852484351}
+  - component: {fileID: 1852484353}
+  - component: {fileID: 1852484352}
+  m_Layer: 5
+  m_Name: timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1852484351
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852484350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 492527703}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -7, y: 112.9}
+  m_SizeDelta: {x: 145.9, y: 58.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1852484352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852484350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 119
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 30
+--- !u!222 &1852484353
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852484350}
+  m_CullTransparentMesh: 0
 --- !u!1 &2021107315
 GameObject:
   m_ObjectHideFlags: 0
