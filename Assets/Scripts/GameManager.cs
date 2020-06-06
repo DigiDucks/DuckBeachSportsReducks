@@ -12,9 +12,14 @@ public class GameManager : MonoBehaviour
 
     public int goal = 8;
 
+    AudioSource musicPlayer;
+
     [SerializeField]
     List<int> levelIndexes = new List<int>();
     List<int> playedGames = new List<int>();
+
+    [SerializeField]
+    AudioClip[] clips;
 
     [SerializeField]
     bool debugging = false;
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
         { 
             levelIndexes.Add(index);
         }
+
+        musicPlayer = GetComponent<AudioSource>();
 
         if (debugging)
         {
@@ -115,6 +122,7 @@ public class GameManager : MonoBehaviour
         score++;
         if (score < goal)
         {
+            musicPlayer.PlayOneShot(clips[0]);
             BeginTransistion();
         }
         else
@@ -128,6 +136,7 @@ public class GameManager : MonoBehaviour
         lives--;
         if (lives > 0)
         {
+            musicPlayer.PlayOneShot(clips[1]);
             BeginTransistion();
         }
         else
