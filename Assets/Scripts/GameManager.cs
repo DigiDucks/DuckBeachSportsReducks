@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        for (int index = 2; index < SceneManager.sceneCountInBuildSettings; index++ )
+        for (int index = 4; index < SceneManager.sceneCountInBuildSettings; index++ )
         { 
             levelIndexes.Add(index);
         }
