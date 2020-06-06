@@ -30,7 +30,7 @@ public class VolleyBall : GameTemplate
     public override void Lose()
     {
         Debug.Log("Lose");
-        GameManager.instance.Lost();
+
     }
 
     public override void Win()
@@ -51,5 +51,11 @@ public class VolleyBall : GameTemplate
         yield return new WaitForSeconds(1f);
         FindObjectOfType<VBEnemy>().anim.Play("GullBump");
         ball.started = true;
+    }
+
+    IEnumerator LoseSequence()
+    {
+        yield return new WaitForSeconds(1.5f);
+
     }
 }

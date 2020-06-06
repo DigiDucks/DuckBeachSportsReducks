@@ -22,6 +22,7 @@ public class BallMovement : MonoBehaviour
 	public bool returned = false;
 	public bool started = false;
 
+	AudioSource audioSource;
 
 	VolleyBall game;
 	VBEnemy enemy;
@@ -39,6 +40,7 @@ public class BallMovement : MonoBehaviour
 		coll = GetComponent<Collider2D>();
 		rend = GetComponent<SpriteRenderer>();
 		enemy = FindObjectOfType<VBEnemy>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -105,5 +107,6 @@ public class BallMovement : MonoBehaviour
 			targetPos = new Vector3((int)Random.Range(-5, -1), -6, 0);
 		}
 		started = true;
+		audioSource.PlayOneShot(audioSource.clip);
 	}
 }

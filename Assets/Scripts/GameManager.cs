@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        for (int index = 4; index < SceneManager.sceneCountInBuildSettings; index++ )
+        for (int index = 5; index < SceneManager.sceneCountInBuildSettings; index++ )
         { 
             levelIndexes.Add(index);
         }
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Complete");
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("GameOver");
+            SceneManager.LoadScene(3);
         }
 
     }

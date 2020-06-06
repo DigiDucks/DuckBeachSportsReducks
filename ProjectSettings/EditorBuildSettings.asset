@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: 70b882372b97ae14a8358cd5fb2b2094
   - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: 67e6f4db5adc531409c7f7c8fc310527
+  - enabled: 1
     path: Assets/Scenes/SkateGame.unity
     guid: 969cae2185625e54fbf6735c005008ef
   - enabled: 1
@@ -29,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Surfboarding.unity
     guid: 0588f2933ee9b71408a62ed033e39b53
+  - enabled: 1
+    path: Assets/Scenes/BodyBuildingGame.unity
+    guid: c7b9c760c02508b4c8be78647d98c94a
+  - enabled: 1
+    path: Assets/Scenes/NapGame.unity
+    guid: 837b1c136f79f4f4ca8449909828fc45
   m_configObjects: {}
