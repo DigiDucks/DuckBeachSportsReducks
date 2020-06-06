@@ -8,6 +8,7 @@ TagManager:
   - Death
   - Obs
   - UI
+  - Win
   layers:
   - Default
   - TransparentFX

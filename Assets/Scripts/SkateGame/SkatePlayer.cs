@@ -69,5 +69,11 @@ public class SkatePlayer : MonoBehaviour
             manager = GameManager.instance;
             manager.Lost();        
         }
+        //Win
+        if (collision.gameObject.CompareTag("Win"))
+        {
+            manager = GameManager.instance;
+            manager.Won();
+        }
     }
 }
