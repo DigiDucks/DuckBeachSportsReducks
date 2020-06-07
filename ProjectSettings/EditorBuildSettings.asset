@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BodyBuildingGame.unity
     guid: c7b9c760c02508b4c8be78647d98c94a
   - enabled: 1
+    path: Assets/Scenes/DuckDating.unity
+    guid: 27b83ae18e2419744a6ce8d25704be82
+  - enabled: 1
     path: Assets/Scenes/NapGame.unity
     guid: 837b1c136f79f4f4ca8449909828fc45
   m_configObjects: {}

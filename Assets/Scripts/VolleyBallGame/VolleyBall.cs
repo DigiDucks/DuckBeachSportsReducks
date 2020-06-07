@@ -29,8 +29,7 @@ public class VolleyBall : GameTemplate
 
     public override void Lose()
     {
-        Debug.Log("Lose");
-
+        StartCoroutine("LoseSequence");
     }
 
     public override void Win()
@@ -55,7 +54,10 @@ public class VolleyBall : GameTemplate
 
     IEnumerator LoseSequence()
     {
-        yield return new WaitForSeconds(1.5f);
+        GameObject player = FindObjectOfType<VBPlayer>().gameObject;
+        player.transform.Rotate(new Vector3(0, 0, 90f));
+        yield return new WaitForSeconds(1.25f);
+        GameManager.instance.Lost();
 
     }
 }

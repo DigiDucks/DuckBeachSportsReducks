@@ -16,7 +16,7 @@ public class RiverLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > -16f)
+        if (transform.position.y > -14f)
         {
             if (started)
             {
@@ -25,7 +25,7 @@ public class RiverLoop : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector2(0, 16f);
+            transform.position = new Vector2(0, 14f);
         }
     }
 }

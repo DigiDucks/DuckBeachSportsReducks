@@ -9,7 +9,7 @@ public class Dance : MonoBehaviour
     string[] dances = new string[3] { "TheBounce", "SideToSide", "TheLean" };
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
         anim.Play(dances[Random.Range(0, dances.Length)]);

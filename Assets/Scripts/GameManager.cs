@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
         score++;
         if (score < goal)
         {
+            Debug.Log("Won");
             musicPlayer.PlayOneShot(clips[0]);
             BeginTransistion();
         }
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
         lives--;
         if (lives > 0)
         {
+            Debug.Log("Lost");
             musicPlayer.PlayOneShot(clips[1]);
             BeginTransistion();
         }

@@ -10,7 +10,7 @@ public class RandomDuckGenerator : MonoBehaviour
     SpriteRenderer _rend;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _rend = GetComponent<SpriteRenderer>();
         GenerateDuck();

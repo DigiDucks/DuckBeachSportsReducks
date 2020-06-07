@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 33932341}
   - component: {fileID: 33932342}
-  - component: {fileID: 33932343}
   - component: {fileID: 33932344}
   - component: {fileID: 33932345}
   m_Layer: 0
@@ -205,20 +204,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &33932343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33932340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de52c03eefc8fd4e855e552305b10c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPoint: {fileID: 0}
-  bullet: {fileID: 0}
 --- !u!114 &33932344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunPoint: {fileID: 33932341}
   bullet: {fileID: 5469679305099004482, guid: dbabdfbeffa065144a5c998e8a927ae2, type: 3}
+  startTimer: 0
 --- !u!120 &33932345
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -405,12 +391,12 @@ PrefabInstance:
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 159.4
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,
         type: 3}
@@ -717,10 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -736,17 +722,17 @@ Canvas:
   m_GameObject: {fileID: 460572784}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 983205480}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &460572788
 RectTransform:
@@ -889,6 +875,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1981376408503839232, guid: 9525c2852b755674d8c766571bccbb76,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.709
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283047516783864072, guid: 9525c2852b755674d8c766571bccbb76,
+        type: 3}
+      propertyPath: debugging
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5283047516783864073, guid: 9525c2852b755674d8c766571bccbb76,
         type: 3}
       propertyPath: m_Name
@@ -1070,6 +1066,7 @@ GameObject:
   - component: {fileID: 983205481}
   - component: {fileID: 983205480}
   - component: {fileID: 983205479}
+  - component: {fileID: 983205482}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1142,6 +1139,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &983205482
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983205478}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0082dac9d43503f47bfc4534db7512fc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1013625691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1441,9 @@ MonoBehaviour:
   fireBlast: {fileID: 0}
   startTimer: 3
   timer: 0
+  healthBar: {fileID: 0}
+  maxHealth: 0
+  health: 0
 --- !u!1 &1374654456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,6 +1479,9 @@ MonoBehaviour:
   speed: 120
   moveInput: 0
   jumpForce: 5000
+  fallForce: 1000
+  duckHeads: []
+  duckHP: 5
 --- !u!61 &1374654458
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class DuckBuildingGame : MonoBehaviour
     {
         if((lifts % 2) == 0)
 		{
-			if(Input.GetKeyDown(KeyCode.UpArrow))
+			if(Input.GetKeyDown(KeyCode.W))
 			{
 				lifts++;
 			}
@@ -43,7 +43,7 @@ public class DuckBuildingGame : MonoBehaviour
 		}
 		else
 		{
-			if (Input.GetKeyDown(KeyCode.DownArrow))
+			if (Input.GetKeyDown(KeyCode.S))
 			{
 				lifts++;
 			}

@@ -18,6 +18,7 @@ public class DatingGameManager : GameTemplate
     public override void Begin()
     {
         start = true;
+        timerText.gameObject.SetActive(true);
     }
 
     public override void Lose()
