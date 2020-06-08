@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   score: 0
-  goal: 8
+  level: 1
+  goal: 5
   levelIndexes: 
   clips:
   - {fileID: 8300000, guid: 21a0a65f6dbb39e41a8d51331aeb5ea5, type: 3}
@@ -61,7 +62,8 @@ AudioSource:
   m_GameObject: {fileID: 5283047516783864073}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6d3dc57f6948b97499478cbb7e5ae280,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.835

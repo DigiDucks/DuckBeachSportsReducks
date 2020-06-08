@@ -43,6 +43,6 @@ public class TransitionManager : MonoBehaviour
     IEnumerator Transistion()
     {
         yield return new WaitForSeconds(3f);
-        manager.BeginGame();
+            manager.BeginGame();
     }
 }

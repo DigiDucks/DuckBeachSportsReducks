@@ -21,6 +21,7 @@ public class BallMovement : MonoBehaviour
 
 	public bool returned = false;
 	public bool started = false;
+	public bool won = false;
 
 	AudioSource audioSource;
 
@@ -70,6 +71,11 @@ public class BallMovement : MonoBehaviour
 	 {
 		
 		started = false;
+        if (won)
+        {
+			game.Win();
+			return;
+        }
 		if (returned)
 		{
 			returned = false;

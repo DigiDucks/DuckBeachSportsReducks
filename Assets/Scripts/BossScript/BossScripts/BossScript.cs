@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BossScript : MonoBehaviour
@@ -21,6 +22,8 @@ public class BossScript : MonoBehaviour
 	[SerializeField] private float maxHealth;
 	[SerializeField] private float health;
 
+	GameManager manager;
+
 	
 
 	// Start is called before the first frame update
@@ -28,6 +31,7 @@ public class BossScript : MonoBehaviour
     {
 		timer = startTimer;
 		healthBar.maxValue = maxHealth;
+		manager = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -53,8 +57,19 @@ public class BossScript : MonoBehaviour
 
 	void Win()
 	{
-		FindObjectOfType<GameManager>().Won();
+
+		if (manager.level > 2)
+		{
+			SceneManager.LoadScene(2);
+		}
+        else
+        {
+			manager.goal += 6;
+			manager.level++;
+			manager.Won();
+        }
 	}
+
 	void Shoot(int Pick)
 	{
 		if(Pick == 1)

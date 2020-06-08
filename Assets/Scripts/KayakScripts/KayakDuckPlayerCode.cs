@@ -48,7 +48,8 @@ public class KayakDuckPlayerCode : MonoBehaviour
 	{
 		GetComponent<SpriteRenderer>().sprite = hitSprite;
 		isAlive = false;
-		FindObjectOfType<GameManager>().Lost();
+		Destroy(collision.gameObject);
+		StartCoroutine("LoseBuffer");
 		
 	}
 
@@ -72,5 +73,11 @@ public class KayakDuckPlayerCode : MonoBehaviour
 		{
 			posInt = 0;
 		}
+	}
+
+	IEnumerator LoseBuffer()
+    {
+		yield return new WaitForSeconds(1f);
+		GameManager.instance.Lost();
 	}
 }

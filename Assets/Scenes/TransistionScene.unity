@@ -859,6 +859,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3648a3ad0432ec341b6f24f4f81c2d18, type: 3}
   - {fileID: 21300000, guid: 5b61cc4e4e100a44097bdb77ebe0e475, type: 3}
   - {fileID: 21300000, guid: 351d8f626255b68499eabc743b04786f, type: 3}
+  - {fileID: 21300000, guid: ab1c644e48e6c5b4fb6f5c857f42dcb1, type: 3}
+  - {fileID: 21300000, guid: db3ec3100cb6ddc4cae32d3e707c6e88, type: 3}
+  - {fileID: 21300000, guid: 6731a2d9e958bac47bde2a2ff8ae2914, type: 3}
   dancers:
   - {fileID: 548785524}
   - {fileID: 1169376275}

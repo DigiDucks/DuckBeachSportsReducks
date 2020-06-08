@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Net.Http.Headers;
 
 public class DatingGameManager : GameTemplate
 {
+    [SerializeField]
     float timer = 20f;
 
     bool start = false;
@@ -15,6 +17,12 @@ public class DatingGameManager : GameTemplate
 
     [SerializeField]
     GameObject playerBlush;
+
+    [SerializeField]
+    GameObject tear;
+
+    [SerializeField]
+    Animator dateAnim;
     public override void Begin()
     {
         start = true;
@@ -23,7 +31,9 @@ public class DatingGameManager : GameTemplate
 
     public override void Lose()
     {
-        GameManager.instance.Lost();
+        start = false;
+        timerText.text = "They Got Away :'(";
+        StartCoroutine("LoseBuffer");
     }
 
     public override void Win()
@@ -32,12 +42,6 @@ public class DatingGameManager : GameTemplate
         timerText.text = "Date Get!";
         StartCoroutine("WinBuffer");
 
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -62,5 +66,13 @@ public class DatingGameManager : GameTemplate
         playerBlush.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         GameManager.instance.Won();
+    }
+
+    IEnumerator LoseBuffer()
+    {
+        dateAnim.Play("WalkOUt");
+        tear.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        GameManager.instance.Lost();
     }
 }

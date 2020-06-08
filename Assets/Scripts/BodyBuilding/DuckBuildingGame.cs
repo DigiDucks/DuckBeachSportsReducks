@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class DuckBuildingGame : MonoBehaviour
+public class DuckBuildingGame : GameTemplate
 {
 
 	public int lifts = 0;
@@ -27,10 +27,20 @@ public class DuckBuildingGame : MonoBehaviour
 	public int RepRequired;
 
 	public SpriteRenderer arrow;
+	[SerializeField]
+	GameObject tear;
+
+	[Tooltip("Buff Ducks For win screen")]
+	[SerializeField]
+	GameObject[] buffDucks;
+
+	bool started = false;
+   
+
     // Update is called once per frame
     void Update()
     {
-        if((lifts % 2) == 0)
+        if((lifts % 2) == 0 && started)
 		{
 			if(Input.GetKeyDown(KeyCode.W))
 			{
@@ -83,17 +93,55 @@ public class DuckBuildingGame : MonoBehaviour
 
 		if(reps >= RepRequired)
 		{
-			FindObjectOfType<GameManager>().Won();
+			Win();
 		}
 		
 		if(timer <= 0)
 		{
-			FindObjectOfType<GameManager>().Lost();
+			Lose();
 		}
 		else
 		{
 			timer -= Time.deltaTime;
 		}
+    }
+
+
+	public override void Begin()
+	{
+		started = true;
+	}
+
+	public override void Lose()
+	{
+		StartCoroutine("LoseBuffer");
+	}
+
+	public override void Win()
+	{
+		StartCoroutine("WinBuffer");
+	}
+
+	IEnumerator WinBuffer()
+    {
+		started = false;
+		arrow.enabled = false;
+		foreach (GameObject duck in buffDucks)
+		{
+			duck.SetActive(true);
+		}
+		yield return new WaitForSeconds(2f);
+		GameManager.instance.Won();
+    }
+
+	IEnumerator LoseBuffer()
+    {
+		started = false;
+		arrow.enabled = false;
+		bar.transform.position = new Vector2(-1f, -2f);
+		tear.SetActive(true);
+		yield return new WaitForSeconds(1.5f);
+		GameManager.instance.Lost();
     }
 
 }

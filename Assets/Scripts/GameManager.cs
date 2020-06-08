@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,9 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     public int score = 0;
 
-    public int goal = 8;
+    public int level = 1;
+
+    public int goal = 5;
 
     AudioSource musicPlayer;
 
@@ -55,29 +58,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void BeginTransistion()
+    public void BeginTransission()
     {
         SceneManager.LoadScene("TransistionScene");
     }
 
     public void BeginGame()
     {
+        if (score >= goal)
+        {
+            SceneManager.LoadScene(4);
+            StartCoroutine("StartSequence");
+            return;
+        }
         SceneManager.LoadScene(PullLevel());
         StartCoroutine("StartSequence");
-    }
-
-    IEnumerator StartSequence()
-    {   
-        yield return new WaitForSeconds(0.5f);
-        GameObject instruction = GameObject.FindGameObjectWithTag("UI");
-        if ( instruction != null)
-        {
-            instruction.GetComponent<Animator>().Play("Entry");
-        }
-        yield return new WaitForSeconds(1f);
-        if(FindObjectOfType<GameTemplate>() != null) FindObjectOfType<GameTemplate>().Begin();
-        yield return new WaitForSeconds(2f);
-        instruction.SetActive(false);
     }
 
     int PullLevel()
@@ -120,16 +115,9 @@ public class GameManager : MonoBehaviour
     public void Won()
     {
         score++;
-        if (score < goal)
-        {
-            Debug.Log("Won");
-            musicPlayer.PlayOneShot(clips[0]);
-            BeginTransistion();
-        }
-        else
-        {
-            SceneManager.LoadScene(2);
-        }
+        Debug.Log("Won");
+        musicPlayer.PlayOneShot(clips[0]);
+        BeginTransission();
     }
 
     public void Lost()
@@ -139,13 +127,34 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Lost");
             musicPlayer.PlayOneShot(clips[1]);
-            BeginTransistion();
+            BeginTransission();
         }
         else
         {
             SceneManager.LoadScene(3);
         }
 
+    }
+
+    public void MainMenu()
+    {
+        lives = 3;
+        score = 0;
+        SceneManager.LoadScene(0);
+    }
+
+    IEnumerator StartSequence()
+    {
+        yield return new WaitForSeconds(0.05f);
+        GameObject instruction = GameObject.FindGameObjectWithTag("UI");
+        if (instruction != null)
+        {
+            instruction.GetComponent<Animator>().Play("Entry");
+        }
+        yield return new WaitForSeconds(0.5f);
+        if (FindObjectOfType<GameTemplate>() != null) FindObjectOfType<GameTemplate>().Begin();
+        yield return new WaitForSeconds(2f);
+        instruction.SetActive(false);
     }
 
 
