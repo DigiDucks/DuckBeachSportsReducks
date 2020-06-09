@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        for (int index = 5; index < SceneManager.sceneCountInBuildSettings; index++ )
+        for (int index = 6; index < SceneManager.sceneCountInBuildSettings; index++ )
         { 
             levelIndexes.Add(index);
         }
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    IEnumerator StartSequence()
+    public IEnumerator StartSequence()
     {
         yield return new WaitForSeconds(0.05f);
         GameObject instruction = GameObject.FindGameObjectWithTag("UI");
