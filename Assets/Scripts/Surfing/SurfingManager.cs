@@ -19,6 +19,9 @@ public class SurfingManager : GameTemplate
 
     SpriteRenderer rend;
 
+    [SerializeField]
+    Animator duckAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +74,8 @@ public class SurfingManager : GameTemplate
                 correctMove++;
                 if (correctMove < goal)
                 {
-                    Trick();
+                    duckAnim.Play(inputMove);
+                   StartCoroutine(Trick());
                     stunt = false;
                 }
                 else
@@ -86,20 +90,11 @@ public class SurfingManager : GameTemplate
         }
     }
 
-    void Trick()
-    {
-        int i = Random.Range(0, moves.Length);
 
-        rend.sprite = sprites[i];
-
-        currentMove = moves[i];
-
-        //Debug.Log(currentMove);
-    }
 
     public override void Begin()
     {
-        Trick();
+        StartCoroutine(Trick());
     }
 
     public override void Lose()
@@ -112,10 +107,30 @@ public class SurfingManager : GameTemplate
     public override void Win()
     {
         Debug.Log("Win");
-        GameManager.instance.Won();
+        StartCoroutine(WinBuffer());
     }
 
+    IEnumerator Trick()
+    {
+        rend.enabled = false;
+        yield return new WaitForSeconds(0.25f);
+        int i = Random.Range(0, moves.Length);
 
+        rend.sprite = sprites[i];
+        rend.enabled = true;
+
+        currentMove = moves[i];
+
+        //Debug.Log(currentMove);
+    }
+
+    IEnumerator WinBuffer()
+    {
+        FindObjectOfType<SurfTimer>().canCall = false;
+        duckAnim.Play("DuckDab");
+        yield return new WaitForSeconds(1.5f);
+        GameManager.instance.Won();
+    }
 
 
 

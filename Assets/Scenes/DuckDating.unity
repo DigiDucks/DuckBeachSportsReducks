@@ -462,11 +462,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quackBubble: {fileID: 620056321}
   normalQuacks:
-  - {fileID: 8300000, guid: 28234968e079dad4aa9f2948fa7877a9, type: 3}
   - {fileID: 8300000, guid: a39729e1d91937e498c268699e1c01f1, type: 3}
+  - {fileID: 8300000, guid: 28234968e079dad4aa9f2948fa7877a9, type: 3}
+  - {fileID: 8300000, guid: a58fa2e21ad4d634d84c43b9bb7e4fe5, type: 3}
+  - {fileID: 8300000, guid: 9fffece989ebdb745bea76843cdd23bb, type: 3}
   cursedQuacks:
   - {fileID: 8300000, guid: 22f93c5ac16180341889bbf882178f22, type: 3}
+  - {fileID: 8300000, guid: 5f988242d8bb17f4eb4d2c10f1582e36, type: 3}
   - {fileID: 8300000, guid: f63f58528cee1304096c68043f749087, type: 3}
+  - {fileID: 8300000, guid: 4b42caa6f7def9f4ea86437acf638309, type: 3}
 --- !u!4 &519189417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553710629508651102, guid: 1539ea803f06a3a4ea9b67d78b5afab6,

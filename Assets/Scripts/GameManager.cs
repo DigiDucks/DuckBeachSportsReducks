@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     AudioSource musicPlayer;
 
+    int lastLevel= 0;
+
     [SerializeField]
     List<int> levelIndexes = new List<int>();
     List<int> playedGames = new List<int>();
@@ -81,34 +83,48 @@ public class GameManager : MonoBehaviour
 
         if (levelIndexes.Count <= 0)
         {
-            Debug.Log("Shuffled");
-            if (playedGames.Count != 0)
-            {
-                foreach (int num in playedGames)
-                {
-                    levelIndexes.Add(num);
-                }
-            }
-            playedGames = new List<int>();
-            for (int i = 0; i < levelIndexes.Count - 1; i++)
-            {
-                int randomIndex = Random.Range(i, levelIndexes.Count);
-                int tempNum = levelIndexes[randomIndex];
-                levelIndexes[randomIndex] = levelIndexes[i];
-                levelIndexes[i] = tempNum;
-            }
+            Shuffle();
         }
+        
 
+       int nextLevel = RandomLevel();
 
-        int nextLevel = 0;
-        int pulledIndex = Random.Range(0, levelIndexes.Count - 1);
-        nextLevel = levelIndexes[pulledIndex];
+        if(nextLevel == lastLevel)
+        {
+            nextLevel = RandomLevel();
+        }
         playedGames.Add(nextLevel);
         levelIndexes.Remove(nextLevel);
         //Debug.Log(levelIndexes.Count);
-
+        lastLevel = nextLevel;
 
         return nextLevel;
+    }
+
+    void Shuffle()
+    {
+        Debug.Log("Shuffled");
+        if (playedGames.Count != 0)
+        {
+            foreach (int num in playedGames)
+            {
+                levelIndexes.Add(num);
+            }
+        }
+        playedGames = new List<int>();
+        for (int i = 0; i < levelIndexes.Count - 1; i++)
+        {
+            int randomIndex = Random.Range(i, levelIndexes.Count);
+            int tempNum = levelIndexes[randomIndex];
+            levelIndexes[randomIndex] = levelIndexes[i];
+            levelIndexes[i] = tempNum;
+        }
+    }
+
+    int RandomLevel()
+    {
+        int pulledIndex = Random.Range(0, levelIndexes.Count - 1);
+        return levelIndexes[pulledIndex];
     }
 
 
@@ -153,7 +169,7 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
         if (FindObjectOfType<GameTemplate>() != null) FindObjectOfType<GameTemplate>().Begin();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         instruction.SetActive(false);
     }
 
