@@ -26,6 +26,16 @@ public class SurfingManager : GameTemplate
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+
+        switch (GameManager.instance.level)
+        {
+            case 1: goal = 5;
+                break;
+            case 2: goal = 6;
+                break;
+            case 3: goal = 7;
+                break;
+        }
         
     }
 

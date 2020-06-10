@@ -9,17 +9,21 @@ public class ScrollingRoad : MonoBehaviour
     public List<GameObject> obstacles;
     public List<GameObject> spawnedObstacles;
 
+    SkatePlayer skate;
+    float multiplier = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        skate = FindObjectOfType<SkatePlayer>();
+        multiplier = skate.speedMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Move road
-        transform.position += movementSpeed * Time.deltaTime;
+        transform.position += movementSpeed*multiplier * Time.deltaTime;
     }
 
     // Called when object becomes invisible

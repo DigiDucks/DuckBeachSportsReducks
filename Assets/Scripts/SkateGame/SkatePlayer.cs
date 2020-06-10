@@ -11,11 +11,23 @@ public class SkatePlayer : MonoBehaviour
     private bool isCrouched = false;
     private Vector3 unCrouchScale = new Vector3(1.5f, 1.5f, 1);
     Rigidbody2D jumpBody;
-    GameManager manager; 
+    GameManager manager;
+
+    public float speedMultiplier = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        switch (GameManager.instance.level)
+        {
+            case 1: speedMultiplier = 1f;
+                break;
+            case 2: speedMultiplier = 1.3f;
+                break;
+            case 3: speedMultiplier = 1.65f;
+                break;
+        }
         jumpBody = GetComponent<Rigidbody2D>();
     }
 

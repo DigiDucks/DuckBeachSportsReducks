@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class GameManager : MonoBehaviour
     AudioSource musicPlayer;
 
     int lastLevel= 0;
+
+    bool speedRunning = false;
+    bool speedStart = false;
+    float speedRunTime = 0f;
+    [SerializeField]
+    Text speedText;
 
     [SerializeField]
     List<int> levelIndexes = new List<int>();
@@ -60,9 +68,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (speedStart)
+        {
+            speedRunTime += Time.deltaTime;
+            speedText.text =(int)(speedRunTime / 60) + ":";
+            if ((int)((speedRunTime % 60) - 1) < 10)
+                speedText.text += "0";
+            speedText.text += (int)((speedRunTime % 60) - 1);
+            speedText.text +="."+ ((Math.Round((speedRunTime - (int)(speedRunTime)), 2))*100).ToString();
+        }
+    }
+
     public void BeginTransission()
     {
         SceneManager.LoadScene("TransistionScene");
+        if(!speedStart&& speedRunning)
+        {
+            speedStart = true;
+        }
     }
 
     public void BeginGame()
@@ -114,7 +139,7 @@ public class GameManager : MonoBehaviour
         playedGames = new List<int>();
         for (int i = 0; i < levelIndexes.Count - 1; i++)
         {
-            int randomIndex = Random.Range(i, levelIndexes.Count);
+            int randomIndex = UnityEngine.Random.Range(i, levelIndexes.Count);
             int tempNum = levelIndexes[randomIndex];
             levelIndexes[randomIndex] = levelIndexes[i];
             levelIndexes[i] = tempNum;
@@ -123,7 +148,7 @@ public class GameManager : MonoBehaviour
 
     int RandomLevel()
     {
-        int pulledIndex = Random.Range(0, levelIndexes.Count - 1);
+        int pulledIndex = UnityEngine.Random.Range(0, levelIndexes.Count - 1);
         return levelIndexes[pulledIndex];
     }
 
@@ -147,6 +172,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            PauseTimer();
             SceneManager.LoadScene(3);
         }
 
@@ -156,7 +182,24 @@ public class GameManager : MonoBehaviour
     {
         lives = 3;
         score = 0;
+        if (speedRunning)
+        {
+            speedStart = false;
+            speedRunTime = 0f;
+            speedText.text = "00:00";
+        }
         SceneManager.LoadScene(0);
+    }
+
+    public void ToggleSpeedRun()
+    {
+        speedRunning = !speedRunning;
+        speedText.gameObject.SetActive(!speedText.gameObject.activeSelf);
+    }
+
+    public void PauseTimer()
+    {
+        speedStart = false;
     }
 
     public IEnumerator StartSequence()

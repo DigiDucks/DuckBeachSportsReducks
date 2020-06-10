@@ -7,18 +7,19 @@ public class SkateObstacle : MonoBehaviour
     public Vector3 movementSpeed = new Vector3(-2f, 0);
     public Vector3 offScreenTeleportPosition = new Vector3(13, -0.5f);
     public int spawnDeviationMax = 1;
+    float multiplier = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        multiplier = FindObjectOfType<SkatePlayer>().speedMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Move road
-        transform.position += movementSpeed * Time.deltaTime;
+        transform.position += movementSpeed*multiplier * Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class VolleyBall : GameTemplate
 {
-    BallMovement ball;
+    BallMovement ball, secondBall,thirdBall;
     int count = 0;
+    float speedMultiplier = 1f;
     [SerializeField]
     int goal = 6;
+
+    bool third = false;
 
     public Text scoreText;
     public Text goalText;
@@ -18,6 +21,11 @@ public class VolleyBall : GameTemplate
     GameObject enemyTear;
     [SerializeField]
     GameObject playerTear;
+
+    [SerializeField]
+    GameObject otherBall;
+
+  
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +38,20 @@ public class VolleyBall : GameTemplate
         StartCoroutine("Serve");
         scoreText.text = "Volley \n" + count.ToString();
         goalText.text = "Goal \n" + goal.ToString();
+
+        switch (GameManager.instance.level)
+        {
+            case 1:speedMultiplier = 1f;
+                break;
+            case 2:speedMultiplier = 0.85f;
+                StartCoroutine(AnotherBall());
+                break;
+            case 3:speedMultiplier = .8f;
+                third = true;
+                StartCoroutine(AnotherBall());
+                break;
+        }
+        ball.speed *= speedMultiplier;
     }
 
     public override void Lose()
@@ -46,7 +68,12 @@ public class VolleyBall : GameTemplate
     {
         count++;
         scoreText.text = "Volley \n" + count.ToString();
-        if (count >= goal) ball.won = true; ;
+        if (count >= goal)
+        {
+            ball.won = true;
+            if(secondBall!=null) secondBall.gameObject.SetActive(false);
+            if (thirdBall != null) thirdBall.gameObject.SetActive(false);
+        }
 
     }
 
@@ -75,6 +102,23 @@ public class VolleyBall : GameTemplate
         enemyTear.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         GameManager.instance.Won();
+    }
+
+    IEnumerator AnotherBall()
+    {
+        Debug.Log("Called");
+        yield return new WaitForSeconds(2f);
+        if (secondBall == null)
+        {
+            secondBall = Instantiate(otherBall, FindObjectOfType<VBEnemy>().transform.position, transform.rotation).GetComponent<BallMovement>();
+            secondBall.speed *= speedMultiplier;
+        }
+        if (third) 
+        {
+            yield return new WaitForSeconds(2f);
+            thirdBall = Instantiate(otherBall, FindObjectOfType<VBEnemy>().transform.position, transform.rotation).GetComponent<BallMovement>();
+            thirdBall.speed *= speedMultiplier;
+        }
 
     }
 }

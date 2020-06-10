@@ -23,6 +23,16 @@ public class PlayerMovement : MonoBehaviour
 	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
+
+        switch (GameManager.instance.level)
+        {
+			case 1: duckHP = 5;
+				break;
+			case 2: duckHP = 4;
+				break;
+			case 3: duckHP = 3;
+				break;
+        }
     }
 
     // Update is called once per frame

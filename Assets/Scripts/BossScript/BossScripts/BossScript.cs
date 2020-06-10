@@ -24,7 +24,7 @@ public class BossScript : MonoBehaviour
 
 	GameManager manager;
 
-	
+	float speedMultiplier = 1f;
 
 	// Start is called before the first frame update
 	void Start()
@@ -32,6 +32,16 @@ public class BossScript : MonoBehaviour
 		timer = startTimer;
 		healthBar.maxValue = maxHealth;
 		manager = GameManager.instance;
+
+        switch (manager.level)
+        {
+			case 1: speedMultiplier = 1f;
+				break;
+			case 2: speedMultiplier = 0.85f;
+				break;
+			case 3: speedMultiplier = 0.7f;
+				break;
+        }
     }
 
     // Update is called once per frame
@@ -60,10 +70,12 @@ public class BossScript : MonoBehaviour
 
 		if (manager.level > 2)
 		{
+			manager.PauseTimer();
 			SceneManager.LoadScene(2);
 		}
         else
         {
+			manager.lives++;
 			manager.goal += 6;
 			manager.level++;
 			manager.Won();
@@ -110,7 +122,7 @@ public class BossScript : MonoBehaviour
 	IEnumerator DoTheBlast(Transform trans, GameObject blast)
 	{
 		trans.GetComponent<Animator>().SetTrigger("glow");
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(0.3f*speedMultiplier);
 		Instantiate(blast, trans.position, Quaternion.identity);
 		yield return null;
 	}
