@@ -35,7 +35,20 @@ public class DuckBuildingGame : GameTemplate
 	GameObject[] buffDucks;
 
 	bool started = false;
-   
+
+    private void Start()
+    {
+        switch (GameManager.instance.level)
+        {
+			case 1: timer = 20f;
+				break;
+			case 2: timer = 15f;
+				break;
+			case 3: timer = 10f;
+				break;
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -88,7 +101,7 @@ public class DuckBuildingGame : GameTemplate
 			ArraySection = 0;
 		}
 
-		timerText.text = Convert.ToInt32(timer).ToString();
+		timerText.text = "Timer: " + Convert.ToInt32(timer).ToString();
 		repText.text = "Reps: " + reps.ToString();
 
 		if(reps >= RepRequired)
@@ -126,9 +139,9 @@ public class DuckBuildingGame : GameTemplate
     {
 		started = false;
 		arrow.enabled = false;
-		foreach (GameObject duck in buffDucks)
+		for(int i = 0;i<GameManager.instance.level;i++)
 		{
-			duck.SetActive(true);
+			buffDucks[i].SetActive(true);
 		}
 		yield return new WaitForSeconds(2f);
 		GameManager.instance.Won();

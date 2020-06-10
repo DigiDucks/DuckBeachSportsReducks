@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: debugging
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5283047516783864072, guid: 9525c2852b755674d8c766571bccbb76,
+        type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5283047516783864073, guid: 9525c2852b755674d8c766571bccbb76,
         type: 3}
       propertyPath: m_Name
@@ -850,7 +855,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f9af3885ba86fb44d935f0979abf7fec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -910,6 +915,7 @@ MonoBehaviour:
   musicPlayer: {fileID: 816605839}
   duckSprite: {fileID: 531050987}
   angrySprite: {fileID: 21300000, guid: 8474f8b83bf54e24fa71d59ec12af8ac, type: 3}
+  napTime: 7
 --- !u!4 &2119818468
 Transform:
   m_ObjectHideFlags: 0

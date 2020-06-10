@@ -15,10 +15,22 @@ public class NapManager : GameTemplate
     [SerializeField]
     Sprite angrySprite;
 
+    [SerializeField]
+    float napTime = 7f;
+
 
     private void Start()
     {
         scratch = GetComponent<AudioSource>();
+        switch (GameManager.instance.level)
+        {
+            case 1: napTime = 7f;
+                break;
+            case 2: napTime = 10f;
+                break;
+            case 3: napTime = 13f;
+                break;
+        }
     }
 
     void Update()
@@ -47,7 +59,7 @@ public class NapManager : GameTemplate
 
     IEnumerator Nap()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(napTime);
         Win();
     }
 

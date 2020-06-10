@@ -280,6 +280,11 @@ PrefabInstance:
       propertyPath: debugging
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5283047516783864072, guid: 9525c2852b755674d8c766571bccbb76,
+        type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5283047516783864073, guid: 9525c2852b755674d8c766571bccbb76,
         type: 3}
       propertyPath: m_Name
@@ -471,6 +476,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5f988242d8bb17f4eb4d2c10f1582e36, type: 3}
   - {fileID: 8300000, guid: f63f58528cee1304096c68043f749087, type: 3}
   - {fileID: 8300000, guid: 4b42caa6f7def9f4ea86437acf638309, type: 3}
+--- !u!95 &519189415
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519189413}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55e15dc55647a3042824de78dd56829f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &519189417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553710629508651102, guid: 1539ea803f06a3a4ea9b67d78b5afab6,
@@ -1321,6 +1345,11 @@ MonoBehaviour:
   playerBlush: {fileID: 2021107315}
   tear: {fileID: 1770366367}
   dateAnim: {fileID: 1366036880}
+  playerAnim: {fileID: 519189415}
+  background: {fileID: 1617580232}
+  danceBackground: {fileID: 21300000, guid: 7c53cf871d57e0a4e835f7ecd6c82f10, type: 3}
+  musicPlayer: {fileID: 585235284}
+  danceMusic: {fileID: 8300000, guid: 23c079777a762034f8ef0a1034175370, type: 3}
 --- !u!224 &1607356814 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8182199090666611632, guid: 24e54390b8373bb43a595dbdc4759ba2,

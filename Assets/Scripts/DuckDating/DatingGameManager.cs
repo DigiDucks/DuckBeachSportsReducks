@@ -11,6 +11,9 @@ public class DatingGameManager : GameTemplate
     float timer = 20f;
 
     bool start = false;
+    bool dancing = false;
+
+    string[] dances = new string[3] { "TheBounce", "SideToSide", "TheLean" };
 
     [SerializeField]
     Text timerText;
@@ -23,6 +26,38 @@ public class DatingGameManager : GameTemplate
 
     [SerializeField]
     Animator dateAnim;
+    public Animator playerAnim;
+
+    [SerializeField]
+    SpriteRenderer background;
+    public Sprite danceBackground;
+    public AudioSource musicPlayer;
+    public AudioClip danceMusic;
+
+    private void Start()
+    {
+        switch (GameManager.instance.level)
+        {
+            case 1: timer = 15f;
+                break;
+            case 2: timer = 11f;
+                    int random = UnityEngine.Random.Range(1, 4);
+                     if (random >=3) DanceTime();
+                break;
+            case 3: timer = 7f;
+                    DanceTime();
+                break;
+        }
+    }
+
+    void DanceTime()
+    {
+        background.sprite = danceBackground;
+        musicPlayer.clip = danceMusic;
+        musicPlayer.Play();
+        dancing = true;
+       }
+
     public override void Begin()
     {
         start = true;
@@ -64,6 +99,11 @@ public class DatingGameManager : GameTemplate
     IEnumerator WinBuffer()
     {
         playerBlush.SetActive(true);
+        if (dancing)
+        {
+            playerAnim.Play(dances[UnityEngine.Random.Range(0, dances.Length)]);
+            dateAnim.Play(dances[UnityEngine.Random.Range(0, dances.Length)]);
+        }
         yield return new WaitForSeconds(1.5f);
         GameManager.instance.Won();
     }

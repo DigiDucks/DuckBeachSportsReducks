@@ -6,17 +6,32 @@ public class RiverLoop : MonoBehaviour
 {
     public float moveSpeed = 1f;
 
+    float speedMultiplier = 1f;
+
     bool started = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        switch (GameManager.instance.level)
+        {
+            case 1:
+                speedMultiplier = 1f;
+                
+                break;
+            case 2:
+                speedMultiplier = 1.2f;
+                break;
+            case 3:
+                speedMultiplier = 1.5f;
+                break;
+        }
+        moveSpeed *= speedMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > -14f)
+        if (transform.position.y > -15f)
         {
             if (started)
             {
@@ -25,7 +40,7 @@ public class RiverLoop : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector2(0, 14f);
+            transform.position = new Vector2(0, 15f);
         }
     }
 }
