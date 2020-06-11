@@ -106,11 +106,13 @@ public class DuckBuildingGame : GameTemplate
 
 		if(reps >= RepRequired)
 		{
+			started = false;
 			Win();
 		}
 		
 		if(timer <= 0)
 		{
+			started = false;
 			Lose();
 		}
 		else

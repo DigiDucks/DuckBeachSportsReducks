@@ -22,6 +22,9 @@ public class SurfingManager : GameTemplate
     [SerializeField]
     Animator duckAnim;
 
+    [SerializeField]
+    AudioSource successSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +87,7 @@ public class SurfingManager : GameTemplate
                 correctMove++;
                 if (correctMove < goal)
                 {
+                    successSound.PlayOneShot(successSound.clip);
                     duckAnim.Play(inputMove);
                    StartCoroutine(Trick());
                     stunt = false;

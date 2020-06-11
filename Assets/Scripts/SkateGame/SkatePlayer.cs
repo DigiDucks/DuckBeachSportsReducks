@@ -35,13 +35,14 @@ public class SkatePlayer : MonoBehaviour
     void Update()
     {
         // Crouch
-        if (Input.GetButton("Vertical"))
+        if (Input.GetKey(KeyCode.S))
         {
             if (isCrouched == false)
             {
                 isCrouched = true;
                 transform.localScale = crouch;
                 transform.Translate(0, -0.885f, 0);
+                jumpBody.gravityScale += 0.5f;
             }
         }
         else
@@ -51,6 +52,7 @@ public class SkatePlayer : MonoBehaviour
                 isCrouched = false;
                 transform.localScale = unCrouchScale;
                 transform.Translate(0, 0.885f, 0);
+                jumpBody.gravityScale -= 0.5f;
             }
         }
         // Jump

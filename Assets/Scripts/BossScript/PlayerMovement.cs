@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private GameObject[] duckHeads;
 	[SerializeField] private int duckHP = 5;
 
+	AudioSource flapSound;
 
 
 
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
+		flapSound = GetComponent<AudioSource>();
 
         switch (GameManager.instance.level)
         {
@@ -78,7 +80,8 @@ public class PlayerMovement : MonoBehaviour
 
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			rb.velocity = Vector2.up * jumpForce;
+			rb.AddForce(Vector2.up * jumpForce);
+			flapSound.PlayOneShot(flapSound.clip);
 		}
 
 		if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
