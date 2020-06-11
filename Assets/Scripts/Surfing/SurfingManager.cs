@@ -24,6 +24,8 @@ public class SurfingManager : GameTemplate
 
     [SerializeField]
     AudioSource successSound;
+    [SerializeField]
+    AudioClip winClip;
 
     // Start is called before the first frame update
     void Start()
@@ -47,8 +49,6 @@ public class SurfingManager : GameTemplate
     void Update()
     {
         ReadInput();
-
-
     }
 
 
@@ -94,8 +94,11 @@ public class SurfingManager : GameTemplate
                 }
                 else
                 {
+                   if(!successSound.isPlaying) successSound.PlayOneShot(winClip);
+                    rend.sprite = null;
+                    stunt = false;
                     Win();
-                }
+                }               
             }
             else
             {
@@ -113,7 +116,6 @@ public class SurfingManager : GameTemplate
 
     public override void Lose()
     {
-
         Debug.Log("Lose");
         GameManager.instance.Lost();
     }
