@@ -182,6 +182,7 @@ public class GameManager : MonoBehaviour
     {
         lives = 3;
         score = 0;
+        level = 1;
         if (speedRunning)
         {
             speedStart = false;

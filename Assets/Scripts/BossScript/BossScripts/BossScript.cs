@@ -22,6 +22,9 @@ public class BossScript : MonoBehaviour
 	[SerializeField] private float maxHealth;
 	[SerializeField] private float health;
 
+	public GameObject waterEffect;
+
+	AudioManager audioManager;
 	GameManager manager;
 
 	float speedMultiplier = 1f;
@@ -32,6 +35,7 @@ public class BossScript : MonoBehaviour
 		timer = startTimer;
 		healthBar.maxValue = maxHealth;
 		manager = GameManager.instance;
+		audioManager = AudioManager.instance;
 
         switch (manager.level)
         {
@@ -87,9 +91,11 @@ public class BossScript : MonoBehaviour
 		if(Pick == 1)
 		{
 			StartCoroutine(DoTheBlast(eyeBlast, greenBeam));
+			audioManager.Play("laser");
 		}
 		else
 		{
+			audioManager.Play("Fire");
 			StartCoroutine(DoTheBlast(chestBlast, fireBlast));
 		}
 	}
@@ -106,8 +112,11 @@ public class BossScript : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "PlayerBlast")
 		{
+			FindObjectOfType<AudioManager>().Play("hurt");
 			StartCoroutine("Flash");
 			Destroy(collision.gameObject);
+			GameObject go = Instantiate(waterEffect, collision.transform.position, Quaternion.identity);
+			Destroy(go, 0.1f);
 		}
 	}
 

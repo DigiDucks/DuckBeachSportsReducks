@@ -18,6 +18,8 @@ public class TransitionManager : MonoBehaviour
     GameObject[] dancers;
 
     SpriteRenderer rend;
+    [SerializeField]
+    GameObject poster;
 
     GameManager manager;
     // Start is called before the first frame update
@@ -28,7 +30,9 @@ public class TransitionManager : MonoBehaviour
         lives.text = "Lives:" + manager.lives.ToString();
         StartCoroutine("Transistion");
         rend = GetComponent<SpriteRenderer>();
-        rend.sprite = sprites[Random.Range(0, sprites.Length)];
+        int backgroundNumber = Random.Range(0, sprites.Length);
+        rend.sprite = sprites[backgroundNumber];
+        if (backgroundNumber == 4) poster.SetActive(true);
         int number = Random.Range(0, dancers.Length);
 
         Debug.Log(number);
